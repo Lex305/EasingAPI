@@ -16,22 +16,20 @@ public static void main(String[] args) throws IOException {
 	frame.setVisible(true);
 	
 	//game loop
-	public void run() {
-		long last = System.currentTimeMillis();
-		while(true) {
-			renderer.repaint();
-			long now = System.currentTimeMillis();
-			float delta = (float) (now - last);
-			Easing.tick(delta);
-			last = now;
-			
-			try {
-				Thread.sleep(1000 / 60 /*60 fps*/);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
+	long last = System.currentTimeMillis();
+	while(true) {
+		renderer.repaint();
+		long now = System.currentTimeMillis();
+		float delta = (float) (now - last);
+		Easing.tick(delta);
+		last = now;
+		
+		try {
+			Thread.sleep(1000 / 60 /*60 fps*/);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
 		}
-	};
+	}
 }
 	
 public static class Renderer extends JLabel {
